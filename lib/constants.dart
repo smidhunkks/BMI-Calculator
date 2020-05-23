@@ -31,5 +31,5 @@ const bmistyle=TextStyle(
 
 const bodytextstyle=TextStyle(
   fontSize: 22,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.normal,
 );

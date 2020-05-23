@@ -1,9 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
 
 class Resultspage extends StatelessWidget {
+Resultspage({@required this.bmiresult,@required this.resultText,@required this.interpretation});
+  final String bmiresult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,35 +21,43 @@ class Resultspage extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: Container(
-            child: Text(
-              'Your Result',
-              style: titletextstyle,
+            child: Center(
+              child: Text(
+                'Your Result',
+                style: titletextstyle,
+              ),
             ),
           )),
           Expanded(
-              flex: 5,
-              child: ReusableCard(
-                colour: activecardclr,
-                cardChild: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Normal',
-                      style: resulttextstyle,
-                    ),
-                    Text(
-                      '18.3',
-                      style: bmistyle,
-                    ),
-                    Text(
-                      'Bmi is low eat more',
-                      style: bodytextstyle,
-                    )
-                  ],
-                ),
-              )),
-             // Bottombutton(onTap: null, buttontitle: null)
+            flex: 5,
+            child: ReusableCard(
+              colour: activecardclr,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    resultText.toUpperCase() ,
+                    style: resulttextstyle,
+                  ),
+                  Text(
+                    bmiresult,
+                    style: bmistyle,
+                  ),
+                  Text(
+                    interpretation,
+                    textAlign:TextAlign.center,
+                    style: bodytextstyle,
+                  )
+                ],
+              ),
+            ),
+          ),
+          Bottombutton(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              buttontitle: 'RE-Calculate'),
         ],
       ),
     );
